@@ -67,8 +67,33 @@
       <file leaf-file-name="MainActivity.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/WakeApp/src/main/java/com/application/wakeapp/MainActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="6" column="13" selection-start="129" selection-end="129" vertical-scroll-proportion="0.12569316" vertical-offset="0" max-vertical-offset="541">
+            <state line="16" column="0" selection-start="394" selection-end="394" vertical-scroll-proportion="-0.676311" vertical-offset="510" max-vertical-offset="1122">
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Stations.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/WakeApp/src/main/java/com/application/wakeapp/Stations.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="134" column="1" selection-start="4233" selection-end="4233" vertical-scroll-proportion="0.0" vertical-offset="84" max-vertical-offset="2380">
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#2868#2876#0" expanded="true" />
+                <element signature="e#3143#3151#0" expanded="true" />
+                <element signature="e#3754#3762#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="JSONParser.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/WakeApp/src/main/java/com/application/wakeapp/JSONParser.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="102" column="1" selection-start="3308" selection-end="3308" vertical-scroll-proportion="0.0" vertical-offset="1202" max-vertical-offset="1836">
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -106,9 +131,20 @@
       </map>
     </option>
   </component>
+  <component name="IdeDocumentHistory">
+    <option name="changedFiles">
+      <list>
+        <option value="$PROJECT_DIR$/WakeApp/src/main/java/com/application/wakeapp/MainActivity.java" />
+        <option value="$PROJECT_DIR$/WakeApp/src/main/java/com/application/wakeapp/Stations.java" />
+        <option value="$PROJECT_DIR$/WakeApp/src/main/java/com/application/wakeapp/JSONParser.java" />
+        <option value="$PROJECT_DIR$/WakeApp/src/main/AndroidManifest.xml" />
+      </list>
+    </option>
+  </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="10" />
-    <option name="width" value="730" />
+    <option name="x" value="33" />
+    <option name="y" value="1" />
+    <option name="width" value="954" />
     <option name="height" value="1040" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
@@ -238,6 +274,24 @@
     <property name="MemberChooser.copyJavadoc" value="false" />
   </component>
   <component name="RunManager" selected="Android Application.WakeApp">
+    <configuration default="true" type="AndroidTestRunConfigurationType" factoryName="Android Tests">
+      <module name="" />
+      <option name="TESTING_TYPE" value="0" />
+      <option name="INSTRUMENTATION_RUNNER_CLASS" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="TARGET_SELECTION_MODE" value="EMULATOR" />
+      <option name="PREFERRED_AVD" value="" />
+      <option name="USE_COMMAND_LINE" value="true" />
+      <option name="COMMAND_LINE" value="" />
+      <option name="WIPE_USER_DATA" value="false" />
+      <option name="DISABLE_BOOT_ANIMATION" value="false" />
+      <option name="NETWORK_SPEED" value="full" />
+      <option name="NETWORK_LATENCY" value="none" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <method />
+    </configuration>
     <configuration default="true" type="Remote" factoryName="Remote">
       <option name="USE_SOCKET_TRANSPORT" value="true" />
       <option name="SERVER_MODE" value="false" />
@@ -371,7 +425,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="10" y="0" width="730" height="1040" extended-state="0" />
+    <frame x="33" y="1" width="954" height="1040" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
@@ -390,8 +444,8 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3886537" sideWeight="0.6704417" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.33916083" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.38789237" sideWeight="0.6704417" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3295583" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -461,9 +515,37 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/WakeApp/src/main/java/com/application/wakeapp/Stations.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="134" column="1" selection-start="4233" selection-end="4233" vertical-scroll-proportion="0.0" vertical-offset="84" max-vertical-offset="2380">
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#2868#2876#0" expanded="true" />
+            <element signature="e#3143#3151#0" expanded="true" />
+            <element signature="e#3754#3762#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WakeApp/src/main/AndroidManifest.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="20" column="0" selection-start="590" selection-end="590" vertical-scroll-proportion="0.6148282" vertical-offset="0" max-vertical-offset="748">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WakeApp/src/main/java/com/application/wakeapp/JSONParser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="102" column="1" selection-start="3308" selection-end="3308" vertical-scroll-proportion="0.0" vertical-offset="1202" max-vertical-offset="1836">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/WakeApp/src/main/java/com/application/wakeapp/MainActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="13" selection-start="129" selection-end="129" vertical-scroll-proportion="0.12569316" vertical-offset="0" max-vertical-offset="541">
+        <state line="16" column="0" selection-start="394" selection-end="394" vertical-scroll-proportion="-0.676311" vertical-offset="510" max-vertical-offset="1122">
           <folding />
         </state>
       </provider>

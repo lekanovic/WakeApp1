@@ -1,15 +1,20 @@
 # incremental data. DO NOT EDIT.
 # format is <lastModified> <length> <SHA-1> <path>
 # Encoding is UTF-8
-1373064725925 727 97220bb7c79dd901675aa0962ff6ef0eae4b6c6b C:\Users\Radovan\Documents\GitHub\WakeApp1\MyApplicationProject\WakeApp\build\classes\release\com\application\wakeapp\R.class
+1373065057328 2433 3ef93ab1ef52b2171190511ebef6903d0bec1fd7 C:\Users\Radovan\Documents\GitHub\WakeApp1\MyApplicationProject\WakeApp\build\classes\release\com\application\wakeapp\Stations$NearbyStations.class
 1373064725926 355 887f35b2214c2180db16027ef88fd34d819bd48a C:\Users\Radovan\Documents\GitHub\WakeApp1\MyApplicationProject\WakeApp\build\classes\release\com\application\wakeapp\BuildConfig.class
-1373064725923 422 a2c893553592680568e5641b93f0c75e86b71db8 C:\Users\Radovan\Documents\GitHub\WakeApp1\MyApplicationProject\WakeApp\build\classes\release\com\application\wakeapp\R$drawable.class
 1373064694604 484258 bd6479f5dd592790607e0504e66e0f31c2b4d308 C:\Users\Radovan\Documents\GitHub\WakeApp1\MyApplicationProject\WakeApp\libs\android-support-v4.jar
 1373064725923 418 1bbeb480a2f076e5a48734c1f8bb1d499ca7cf7b C:\Users\Radovan\Documents\GitHub\WakeApp1\MyApplicationProject\WakeApp\build\classes\release\com\application\wakeapp\R$layout.class
-1373064725924 487 e1b871c8eacad0230d2a4f088db2b8871f1df978 C:\Users\Radovan\Documents\GitHub\WakeApp1\MyApplicationProject\WakeApp\build\classes\release\com\application\wakeapp\R$string.class
 1373064725921 355 637b01ea587fef2c0e368ce15498d272e718fe7e C:\Users\Radovan\Documents\GitHub\WakeApp1\MyApplicationProject\WakeApp\build\classes\release\com\application\wakeapp\R$attr.class
-1373064725925 446 1a18f623b3fe970ca98b9d7901abf6e75bb5ddec C:\Users\Radovan\Documents\GitHub\WakeApp1\MyApplicationProject\WakeApp\build\classes\release\com\application\wakeapp\R$style.class
 1373064725923 408 6db6c15a81dc6e70e1d73485530777bd3e5c6977 C:\Users\Radovan\Documents\GitHub\WakeApp1\MyApplicationProject\WakeApp\build\classes\release\com\application\wakeapp\R$id.class
-1373064725919 827 147e0eefd989dc164aefd7deb8a5dbdfe279a8a2 C:\Users\Radovan\Documents\GitHub\WakeApp1\MyApplicationProject\WakeApp\build\classes\release\com\application\wakeapp\MainActivity.class
-1373064725924 403 176eecfdbc091cb4796c34cdd010476672a3d0b0 C:\Users\Radovan\Documents\GitHub\WakeApp1\MyApplicationProject\WakeApp\build\classes\release\com\application\wakeapp\R$menu.class
+1373064725925 446 1a18f623b3fe970ca98b9d7901abf6e75bb5ddec C:\Users\Radovan\Documents\GitHub\WakeApp1\MyApplicationProject\WakeApp\build\classes\release\com\application\wakeapp\R$style.class
+1373065057329 1675 62ea1c874ca454fd7fdfc5b722a544bae562179f C:\Users\Radovan\Documents\GitHub\WakeApp1\MyApplicationProject\WakeApp\build\classes\release\com\application\wakeapp\Stations$StationList.class
 1373064725922 476 b9c61fabb4799c935ee3e9bc4861279b554f34a0 C:\Users\Radovan\Documents\GitHub\WakeApp1\MyApplicationProject\WakeApp\build\classes\release\com\application\wakeapp\R$dimen.class
+1373064725924 403 176eecfdbc091cb4796c34cdd010476672a3d0b0 C:\Users\Radovan\Documents\GitHub\WakeApp1\MyApplicationProject\WakeApp\build\classes\release\com\application\wakeapp\R$menu.class
+1373065057301 3724 040b12d64756cf4b317b3df1439279858fc77b04 C:\Users\Radovan\Documents\GitHub\WakeApp1\MyApplicationProject\WakeApp\build\classes\release\com\application\wakeapp\JSONParser.class
+1373065057331 2731 0db7fb5311f929a45907cec9bed6528243ae0fa4 C:\Users\Radovan\Documents\GitHub\WakeApp1\MyApplicationProject\WakeApp\build\classes\release\com\application\wakeapp\Stations.class
+1373065057317 1685 7eedd0dd9b508da30e89537a9c43dff654cc2c5f C:\Users\Radovan\Documents\GitHub\WakeApp1\MyApplicationProject\WakeApp\build\classes\release\com\application\wakeapp\MainActivity$Background.class
+1373064725925 727 97220bb7c79dd901675aa0962ff6ef0eae4b6c6b C:\Users\Radovan\Documents\GitHub\WakeApp1\MyApplicationProject\WakeApp\build\classes\release\com\application\wakeapp\R.class
+1373064725923 422 a2c893553592680568e5641b93f0c75e86b71db8 C:\Users\Radovan\Documents\GitHub\WakeApp1\MyApplicationProject\WakeApp\build\classes\release\com\application\wakeapp\R$drawable.class
+1373064725924 487 e1b871c8eacad0230d2a4f088db2b8871f1df978 C:\Users\Radovan\Documents\GitHub\WakeApp1\MyApplicationProject\WakeApp\build\classes\release\com\application\wakeapp\R$string.class
+1373065057318 2588 4923f3093ed315771b3a450e097b4a6f6eb68b5b C:\Users\Radovan\Documents\GitHub\WakeApp1\MyApplicationProject\WakeApp\build\classes\release\com\application\wakeapp\MainActivity.class
