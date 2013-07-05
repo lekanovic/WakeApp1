@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merger>
+
+    <dataSet config="main" >
+        <source path="C:\Users\Radovan\Documents\GitHub\WakeApp1\MyApplicationProject\WakeApp\src\main\assets" />
+    </dataSet>
+    <dataSet config="debug" >
+        <source path="C:\Users\Radovan\Documents\GitHub\WakeApp1\MyApplicationProject\WakeApp\src\debug\assets" />
+    </dataSet>
+
+</merger>
