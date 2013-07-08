@@ -16,7 +16,7 @@
             />
 
     <uses-sdk
-        android:minSdkVersion="7"
+        android:minSdkVersion="11"
         android:targetSdkVersion="16" />
 
     <application
@@ -33,6 +33,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <service
+                android:name=".BackgroundService"
+                android:label="BackgroundServiceApp"/>
     </application>
 
 </manifest>

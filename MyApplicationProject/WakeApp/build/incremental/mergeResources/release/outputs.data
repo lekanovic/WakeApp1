@@ -1,13 +1,13 @@
 # incremental data. DO NOT EDIT.
 # format is <lastModified> <length> <SHA-1> <path>
 # Encoding is UTF-8
-1373064725614 244 045ff451db7cd8e61285502b8c9bbf7405f2078d C:\Users\Radovan\Documents\GitHub\WakeApp1\MyApplicationProject\WakeApp\build\res\all\release\menu\main.xml
-1373064725618 130 90e37035f35f83953c491e73e930b7aea297a472 C:\Users\Radovan\Documents\GitHub\WakeApp1\MyApplicationProject\WakeApp\build\res\all\release\values-sw720dp-land\values.xml
-1373064725617 210 c41731f5631a90fa989588ef97e9476fc244b438 C:\Users\Radovan\Documents\GitHub\WakeApp1\MyApplicationProject\WakeApp\build\res\all\release\values-v11\values.xml
+1373065194134 250 82d56e611a63ce2e3a53bfe9a5f3cf3e4733cdc6 C:\Users\Radovan\Documents\GitHub\WakeApp1\MyApplicationProject\WakeApp\build\res\all\release\menu\main.xml
+1373065237903 130 90e37035f35f83953c491e73e930b7aea297a472 C:\Users\Radovan\Documents\GitHub\WakeApp1\MyApplicationProject\WakeApp\build\res\all\release\values-sw720dp-land\values.xml
+1373065237901 210 c41731f5631a90fa989588ef97e9476fc244b438 C:\Users\Radovan\Documents\GitHub\WakeApp1\MyApplicationProject\WakeApp\build\res\all\release\values-v11\values.xml
 1373064725679 13325 db9ba7b327762fcbd8ef2fb31fc1fec4acfb5735 C:\Users\Radovan\Documents\GitHub\WakeApp1\MyApplicationProject\WakeApp\build\res\all\release\drawable-xhdpi\ic_launcher.png
-1373064725616 805 803f74d3a6ddb6b30fd6da88dfdd97fb9482ce52 C:\Users\Radovan\Documents\GitHub\WakeApp1\MyApplicationProject\WakeApp\build\res\all\release\values\values.xml
-1373064725614 649 52e8d9051811c2787c5fc0d0dc7735d67b0820be C:\Users\Radovan\Documents\GitHub\WakeApp1\MyApplicationProject\WakeApp\build\res\all\release\layout\activity_main.xml
-1373064725616 224 3bee0d9a6f0efbaf11495ad45fdeb8f71aee62e8 C:\Users\Radovan\Documents\GitHub\WakeApp1\MyApplicationProject\WakeApp\build\res\all\release\values-v14\values.xml
+1373065237897 805 803f74d3a6ddb6b30fd6da88dfdd97fb9482ce52 C:\Users\Radovan\Documents\GitHub\WakeApp1\MyApplicationProject\WakeApp\build\res\all\release\values\values.xml
+1373187247499 2367 810a2b1c63a98091ef07118502bd63087cf1ade8 C:\Users\Radovan\Documents\GitHub\WakeApp1\MyApplicationProject\WakeApp\build\res\all\release\layout\activity_main.xml
+1373065237900 224 3bee0d9a6f0efbaf11495ad45fdeb8f71aee62e8 C:\Users\Radovan\Documents\GitHub\WakeApp1\MyApplicationProject\WakeApp\build\res\all\release\values-v14\values.xml
 1373064725664 25224 08b5ad4465ec907df653c256cc619450e4b6f41f C:\Users\Radovan\Documents\GitHub\WakeApp1\MyApplicationProject\WakeApp\build\res\all\release\drawable-xxhdpi\ic_launcher.png
 1373064725648 4551 fb40955d0c72a1203d4d9a4267c9748829a8c747 C:\Users\Radovan\Documents\GitHub\WakeApp1\MyApplicationProject\WakeApp\build\res\all\release\drawable-mdpi\ic_launcher.png
 1373064725645 8687 05329b41f03eb68399163a788bd663cb34275ee2 C:\Users\Radovan\Documents\GitHub\WakeApp1\MyApplicationProject\WakeApp\build\res\all\release\drawable-hdpi\ic_launcher.png
