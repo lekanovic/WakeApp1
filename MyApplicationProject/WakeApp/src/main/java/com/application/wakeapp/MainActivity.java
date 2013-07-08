@@ -36,14 +36,17 @@ public class MainActivity extends Activity {
     private ArrayList<String> stationList;
     private ArrayList<String> stationListNameOnly;
     private LocationManager locationManager;
+    private Boolean isServiceStarted = Boolean.FALSE;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        System.out.println("Radde123 onCreate " + isServiceStarted);
 
         findGPSPosition();
 
+        finalDestination = new Location("Destination");
         stationList = new ArrayList<String>();
         stationListNameOnly = new ArrayList<String>();
 
@@ -63,6 +66,7 @@ public class MainActivity extends Activity {
             @Override
             public void onClick(View view) {
                 Intent newIntent = new Intent(MainActivity.this,BackgroundService.class);
+
                 newIntent.putExtra("lng",finalDestination.getLongitude());
                 newIntent.putExtra("lat",finalDestination.getLatitude());
                 startService(newIntent);
@@ -71,8 +75,9 @@ public class MainActivity extends Activity {
                 startMain.addCategory(Intent.CATEGORY_HOME);
                 startMain.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(startMain);
-               // finish();
-                System.out.println("Radde123 " + finalDestination.getLongitude());
+
+                isServiceStarted = Boolean.TRUE;
+                System.out.println("Radde123 " + finalDestination.getLongitude() + " " + isServiceStarted);
             }
         });
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -89,7 +94,6 @@ public class MainActivity extends Activity {
                         break;
                     }
                 }
-                finalDestination = new Location("Destination");
                 finalDestination.setLatitude(lat);
                 finalDestination.setLongitude(lng);
 
@@ -98,8 +102,8 @@ public class MainActivity extends Activity {
                 mListView.setVisibility(View.INVISIBLE);
                 mButton.setVisibility(View.VISIBLE);
                 mTextView.setVisibility(View.VISIBLE);
-                mTextView.setText("Set final destination: " + stationName + "\n" +
-                        "Destination distance: " + distance / 1000 + " km\n" +
+                mTextView.setText("Final destination: " + stationName + "\n" +
+                        "Distance to destination: " + distance / 1000 + " km\n" +
                         "Current speed: " + myLocation.getSpeed());
 
                 hideSoftKeyboard();
@@ -225,9 +229,9 @@ public class MainActivity extends Activity {
 
             stationListNameOnly = removeCoordinates(stationList);
 
-            for (int i=0;i<stationList.size();i++){
-                System.out.println("Radde123 " + stationList.get(i));
-            }
+            //for (int i=0;i<stationList.size();i++){
+            //    System.out.println("Radde123 " + stationList.get(i));
+            //}
 
             runOnUiThread(new Runnable() {
                 @Override
@@ -246,8 +250,20 @@ public class MainActivity extends Activity {
     @Override
     protected void onResume() {
         super.onResume();
-        System.out.println("Radde123 onResume");
+        System.out.println("Radde123 onResume " + isServiceStarted);
         stopService(new Intent(MainActivity.this,
                 BackgroundService.class));
+        isServiceStarted = Boolean.FALSE;
+
     }
+    @Override
+    protected void onDestroy(){
+        super.onDestroy();
+        System.out.println("Radde123 onDestroy " + isServiceStarted);
+        stopService(new Intent(MainActivity.this,
+                BackgroundService.class));
+        isServiceStarted = Boolean.FALSE;
+
+    }
+
 }
