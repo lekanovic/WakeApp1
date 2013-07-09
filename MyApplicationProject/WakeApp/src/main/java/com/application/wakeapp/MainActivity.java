@@ -103,9 +103,7 @@ public class MainActivity extends Activity {
                 mListView.setVisibility(View.INVISIBLE);
                 mButton.setVisibility(View.VISIBLE);
                 mTextView.setVisibility(View.VISIBLE);
-                mTextView.setText("Final destination: " + stationName + "\n" +
-                        "Distance to destination: " + distance / 1000 + " km\n" +
-                        "Current speed: " + myLocation.getSpeed());
+                mTextView.setText(getTravelInfo());
 
                 hideSoftKeyboard();
             }
@@ -258,9 +256,7 @@ public class MainActivity extends Activity {
             mSearchView.setIconified(true);
             mTextView.setVisibility(View.VISIBLE);
             mButton.setVisibility(View.VISIBLE);
-            mTextView.setText("Final destination: " + stationName + "\n" +
-                "Distance to destination: " + myLocation.distanceTo(finalDestination) / 1000 + " km\n" +
-                "Current speed: " + myLocation.getSpeed());
+            mTextView.setText(getTravelInfo());
 
         }
 
@@ -277,6 +273,21 @@ public class MainActivity extends Activity {
                 BackgroundService.class));
         isServiceStarted = Boolean.FALSE;
 
+    }
+    private String getTravelInfo(){
+        String dist;
+        System.out.println("Radde123 getTravelInfo" + distance);
+        if (distance > 1000)
+            dist = String.format("%.3g km\n",distance/1000);
+        else
+            dist = String.format("%f meter\n",distance);
+
+
+        String info = "Final destination: " + stationName + "\n" +
+                      "Distance to destination: " + dist +
+                      "Current speed: " + myLocation.getSpeed()*(3.6) + " km/h\n";
+
+        return info;
     }
 
 }
