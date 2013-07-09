@@ -39,7 +39,7 @@
     <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Select destionation"
+            android:text="Select final destination"
             android:id="@+id/button"
             android:layout_marginBottom="34dp"
             android:layout_alignBottom="@+id/listView"
@@ -49,6 +49,7 @@
     <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textStyle="bold"
             android:text="New Text"
             android:id="@+id/textView"
             android:layout_centerVertical="true"

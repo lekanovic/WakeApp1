@@ -37,6 +37,8 @@ public class MainActivity extends Activity {
     private ArrayList<String> stationListNameOnly;
     private LocationManager locationManager;
     private Boolean isServiceStarted = Boolean.FALSE;
+    private String stationName;
+    private Float distance;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,9 +85,8 @@ public class MainActivity extends Activity {
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                String stationName = ((TextView) view).getText().toString();
+                stationName = ((TextView) view).getText().toString();
                 Double lat = 0.0, lng = 0.0;
-                Float distance;
 
                 for (String item : stationList) {
                     if (item.startsWith(stationName)) {
@@ -134,6 +135,7 @@ public class MainActivity extends Activity {
                 } else {
                     mListView.setFilterText(newText.toString());
                     mListView.setVisibility(View.VISIBLE);
+                    mTextView.setVisibility(View.INVISIBLE);
                 }
                 return true;
             }
@@ -251,6 +253,17 @@ public class MainActivity extends Activity {
     protected void onResume() {
         super.onResume();
         System.out.println("Radde123 onResume " + isServiceStarted);
+
+        if (isServiceStarted){
+            mSearchView.setIconified(true);
+            mTextView.setVisibility(View.VISIBLE);
+            mButton.setVisibility(View.VISIBLE);
+            mTextView.setText("Final destination: " + stationName + "\n" +
+                "Distance to destination: " + myLocation.distanceTo(finalDestination) / 1000 + " km\n" +
+                "Current speed: " + myLocation.getSpeed());
+
+        }
+
         stopService(new Intent(MainActivity.this,
                 BackgroundService.class));
         isServiceStarted = Boolean.FALSE;

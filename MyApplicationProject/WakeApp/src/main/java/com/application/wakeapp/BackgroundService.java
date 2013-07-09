@@ -174,7 +174,7 @@ public class BackgroundService extends Service {
     @Override
     public void onDestroy(){
         mNotificationManager.cancelAll();
-        System.out.println("Radde123 onDestroy");
+        System.out.println("Radde123 Service: onDestroy");
        // stopGPS();
         //stopSelf();
     }
