@@ -276,12 +276,11 @@ public class MainActivity extends Activity {
     }
     private String getTravelInfo(){
         String dist;
-        System.out.println("Radde123 getTravelInfo" + distance);
+
         if (distance > 1000)
             dist = String.format("%.3g km\n",distance/1000);
         else
-            dist = String.format("%f meter\n",distance);
-
+            dist = String.format("%.3g meter\n",distance);
 
         String info = "Final destination: " + stationName + "\n" +
                       "Distance to destination: " + dist +

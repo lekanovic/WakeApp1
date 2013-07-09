@@ -117,9 +117,12 @@ public class Stations {
             try {
                 JSONObject c = jsonArray.getJSONObject(i);
 
-                locationList.add(c.getString("name") + " " +
-                        c.getString("@y") + " " +
-                        c.getString("@x"));
+                // We get null as coordinates this should be removed
+                if (!c.getString("@y").equals("null")){
+                    locationList.add(c.getString("name") + " " +
+                            c.getString("@y") + " " +
+                            c.getString("@x"));
+                }
 
             } catch (JSONException e) {
                 e.printStackTrace();
@@ -137,9 +140,13 @@ public class Stations {
             try {
                 JSONObject c = jsonArray.getJSONObject(i);
 
-                locationList.add(c.getString("name") + " " +
-                        c.getString("lat") + " " +
-                        c.getString("lng"));
+                // If we get null as coordinates we should remove them
+                if ( !c.getString("lat").equals("null") ){
+                    locationList.add(c.getString("name") + " " +
+                            c.getString("lat") + " " +
+                            c.getString("lng"));
+                }
+
             } catch (JSONException e) {
                 e.printStackTrace();
             }
