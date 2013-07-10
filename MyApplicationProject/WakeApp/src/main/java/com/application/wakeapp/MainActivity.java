@@ -2,6 +2,8 @@ package com.application.wakeapp;
 
 import android.content.Context;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteException;
 import android.location.Criteria;
 import android.location.Location;
 import android.location.LocationListener;
@@ -190,6 +192,21 @@ public class MainActivity extends Activity {
     }
 
     class Background extends AsyncTask<String, Integer, String> {
+        // Check if database exits
+        private boolean checkDataBase() {
+            SQLiteDatabase checkDB = null;
+            try {
+                checkDB = SQLiteDatabase.openDatabase(
+                        "data/data/com.example.databasetest/databases/stationNames", null,
+                        SQLiteDatabase.OPEN_READONLY);
+
+                checkDB.close();
+            } catch (SQLiteException e) {
+                // database doesn't exist yet.
+            }
+            return checkDB != null ? true : false;
+        }
+
         private ArrayList<String> removeCoordinates(ArrayList<String> l){
             ArrayList<String> newList = new ArrayList<String>();
 
