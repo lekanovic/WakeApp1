@@ -26,6 +26,13 @@ public class DataBaseHandler extends SQLiteOpenHelper{
     private static final String KEY_LATITUDE = "Lat";
     private static final String KEY_LONGITUDE = "Lng";
 
+    // previousSearch name has special meaning. All location
+    // saved as stationName 'previousSearch' is location where
+    // user was standing when doing the search. If the user does
+    // an new search but is very close to the previous one then
+    // we should not fetch data from server. It will mean that the
+    // search was already done an exist in database.
+    //
     private static final String PREVIOUS = "previousSearch";
 
 
@@ -59,6 +66,7 @@ public class DataBaseHandler extends SQLiteOpenHelper{
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
 
+        System.out.println("Radde123 addLocation: " + l.getProvider());
         values.put(KEY_NAME,l.getProvider());
         values.put(KEY_LATITUDE,l.getLatitude());
         values.put(KEY_LONGITUDE,l.getLongitude());

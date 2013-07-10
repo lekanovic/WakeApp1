@@ -41,7 +41,11 @@ public class MainActivity extends Activity {
     private Boolean isServiceStarted = Boolean.FALSE;
     private String stationName;
     private Float distance;
-
+    private DataBaseHandler mDataBaseHandler;
+    private Boolean isThereAnDatabase = Boolean.FALSE;
+    private Integer OUTSIDE_THRESHOLD = 1000;
+    private final String PATH_TO_DATABASE =
+            "data/data/com.application.wakeapp/databases/stationNames";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,9 +54,15 @@ public class MainActivity extends Activity {
 
         findGPSPosition();
 
+        if ( checkDataBase()){
+            System.out.println("Radde123 Database exists");
+            isThereAnDatabase = Boolean.TRUE;
+        }
+
         finalDestination = new Location("Destination");
         stationList = new ArrayList<String>();
         stationListNameOnly = new ArrayList<String>();
+        mDataBaseHandler = new DataBaseHandler(MainActivity.this);
 
         new Background().execute();
 
@@ -190,21 +200,93 @@ public class MainActivity extends Activity {
                 locationListener,null);
 
     }
+    // Check if database exits
+    private boolean checkDataBase() {
+        SQLiteDatabase checkDB = null;
+        try {
+            checkDB = SQLiteDatabase.openDatabase(
+                    PATH_TO_DATABASE, null,
+                    SQLiteDatabase.OPEN_READONLY);
+
+            checkDB.close();
+        } catch (SQLiteException e) {
+            // database doesn't exist yet.
+        }
+        return checkDB != null ? true : false;
+    }
 
     class Background extends AsyncTask<String, Integer, String> {
-        // Check if database exits
-        private boolean checkDataBase() {
-            SQLiteDatabase checkDB = null;
-            try {
-                checkDB = SQLiteDatabase.openDatabase(
-                        "data/data/com.example.databasetest/databases/stationNames", null,
-                        SQLiteDatabase.OPEN_READONLY);
 
-                checkDB.close();
-            } catch (SQLiteException e) {
-                // database doesn't exist yet.
+        private void addPreviousLocation() {
+            System.out.println("Radde123 addPreviousLocation");
+            Location l = new Location("previousSearch");
+            l.setLatitude(myLocation.getLatitude());
+            l.setLongitude(myLocation.getLongitude());
+
+            mDataBaseHandler.addLocation(l);
+        }
+        private void populateDatabase(){
+            System.out.println("Radde123 populateDatabase");
+            Stations stations =
+                    new Stations(myLocation.getLongitude(),
+                            myLocation.getLatitude(),
+                            radius);
+
+            stationList = stations.getAllStations(Boolean.FALSE);
+
+            stationListNameOnly = removeCoordinates(stationList);
+
+            // Very ugly way to parse the location string that
+            // looks like this
+            // "Lund cental station 53.213 15.235"
+            // "Aroboga 56.542 17.34456"
+            // when we have extracted name and coordinates we
+            // add it to the database
+            for (String item : stationList){
+                StringBuilder sb = new StringBuilder();
+                String[] tmp = item.split(" ");
+                int items = tmp.length;
+                Double lat = Double.parseDouble(tmp[(items-2)]);
+                Double lng = Double.parseDouble(tmp[(items-1)]);
+                for ( int i=0;i<items-2;i++){
+                    sb.append(tmp[i] + " ");
+                }
+                String name = sb.toString();
+
+                Location l = new Location(name);
+                l.setLatitude(lat);
+                l.setLongitude(lng);
+                //System.out.println("Radde123 adding to data base: " + name + " lat: " +
+                //        lat + " lng: " + lng);
+
+                mDataBaseHandler.addLocation(l);
             }
-            return checkDB != null ? true : false;
+
+
+        }
+        private Boolean isOutsideThreshold(){
+            Boolean ret = Boolean.FALSE;
+            System.out.println("Radde123 isOutsideThreshold");
+            ArrayList<Location> locations = mDataBaseHandler.getOnlyPreviousSearchesLocation();
+
+            for (Location l : locations){
+                System.out.println("Radde123 OUTSIDE_THRESHOLD lat: " + l.getLatitude() +
+                        " lng: " + l.getLongitude());
+                    if ( myLocation.distanceTo(l) > OUTSIDE_THRESHOLD){
+                        return Boolean.TRUE;
+                    }
+
+            }
+            return ret;
+        }
+        private void fetchFromCache(){
+            System.out.println("Radde123 fetchFromCache");
+            stationList = mDataBaseHandler.getAllButPreviousString();
+            stationListNameOnly = removeCoordinates(stationList);
+
+           // for ( String s : stationList){
+           //     System.out.println("Radde123 " + s);
+           // }
         }
 
         private ArrayList<String> removeCoordinates(ArrayList<String> l){
@@ -233,22 +315,21 @@ public class MainActivity extends Activity {
                 }
             }while(myLocation == null);
 
+            // First start-up we don't have an database.
+            // Download station list from server and
+            // populate database.
+            // else we have the data locally no need to
+            // fetch from server.
+            if ( !isThereAnDatabase || isOutsideThreshold() )
+                populateDatabase();
+            else
+                fetchFromCache();
+
+            addPreviousLocation();
+
             System.out.println("Radde123 Pos found: lat: " +
                     myLocation.getLatitude() + " lng: " +
                     myLocation.getLongitude());
-
-            Stations stations =
-                    new Stations(myLocation.getLongitude(),
-                            myLocation.getLatitude(),
-                            radius);
-
-            stationList = stations.getAllStations(Boolean.FALSE);
-
-            stationListNameOnly = removeCoordinates(stationList);
-
-            //for (int i=0;i<stationList.size();i++){
-            //    System.out.println("Radde123 " + stationList.get(i));
-            //}
 
             runOnUiThread(new Runnable() {
                 @Override
