@@ -12,6 +12,7 @@ import android.location.LocationManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.app.Activity;
+import android.os.SystemClock;
 import android.preference.PreferenceManager;
 import android.text.TextUtils;
 import android.view.Menu;
@@ -27,6 +28,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 public class MainActivity extends Activity {
 
@@ -177,10 +180,39 @@ public class MainActivity extends Activity {
         String[] tmp = s.split(" ");
         return Double.parseDouble(tmp[tmp.length-1]);
     }
+    private Boolean tryGetQuickGPSFix(){
+        Boolean ret = Boolean.FALSE;
+
+        Criteria criteria = new Criteria();
+        criteria.setSpeedAccuracy(Criteria.ACCURACY_LOW);
+
+        String name = locationManager.getBestProvider(criteria,false);
+
+        Location tmp = locationManager.getLastKnownLocation(name);
+
+        long delta = TimeUnit.MILLISECONDS.toSeconds(System.currentTimeMillis() - tmp.getTime());
+
+        // If the location is older then 3minutes
+        // then we should consider it out-dated
+        if ( (int)delta < (60*3) ){
+            System.out.println("Radde123: We got Quick GPS fix: " + delta);
+            myLocation = tmp;
+            ret = Boolean.TRUE;
+        }
+
+        return ret;
+    }
     private void findGPSPosition(){
 
         locationManager = (LocationManager)
                 getSystemService(Context.LOCATION_SERVICE);
+
+        // If there is an position that is not out-dated
+        // we should use it to get fast GPS coordinates.
+        // Otherwise we need to use the GPS which takes
+        // more time and consumes more power.
+        if (tryGetQuickGPSFix())
+            return;
 
         LocationListener locationListener = new LocationListener() {
             @Override
@@ -325,6 +357,7 @@ public class MainActivity extends Activity {
             return  newList;
         }
         protected String doInBackground(String... urls) {
+            long startTime = System.currentTimeMillis();
             do{//We need to get an position
                 try {
                     Thread.sleep(1000);
@@ -333,6 +366,8 @@ public class MainActivity extends Activity {
                     e.printStackTrace();
                 }
             }while(myLocation == null);
+            System.out.println("Radde123: Time to get GPS; " +
+                    (System.currentTimeMillis() - startTime)/1000 + " sec");
 
             // First start-up we don't have an database.
             // Download station list from server and
