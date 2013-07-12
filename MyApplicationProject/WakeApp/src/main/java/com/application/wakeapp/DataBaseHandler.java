@@ -154,5 +154,8 @@ public class DataBaseHandler extends SQLiteOpenHelper{
         }
         return previousLocations;
     }
+    public String getDatabaseName(){
+        return DATABASE_NAME;
+    }
 }
 

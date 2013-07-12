@@ -48,6 +48,7 @@ public class MainActivity extends Activity {
     private SharedPreferences prefs;
     private int searchRadius;
     private int outsidethreshold;
+    private Boolean usedatabase;
     private final String PATH_TO_DATABASE =
             "data/data/com.application.wakeapp/databases/stationNames";
     @Override
@@ -60,6 +61,8 @@ public class MainActivity extends Activity {
         outsidethreshold = Integer.parseInt(prefs.getString("outsidethreshold","500"));
         searchRadius = Integer.parseInt(prefs.getString("searchradius","5000"));
 
+        usedatabase = prefs.getBoolean("usedatabase",Boolean.TRUE);
+        System.out.println("Radde123 usedatabase: " + usedatabase );
         findGPSPosition();
 
         if ( checkDataBase()){
@@ -284,6 +287,17 @@ public class MainActivity extends Activity {
             }
             return ret;
         }
+        private void fetchFromServer(){
+            System.out.println("Radde123 fetchFromServer");
+            Stations stations =
+                    new Stations(myLocation.getLongitude(),
+                            myLocation.getLatitude(),
+                            searchRadius);
+
+            stationList = stations.getAllStations(Boolean.FALSE);
+
+            stationListNameOnly = removeCoordinates(stationList);
+        }
         private void fetchFromCache(){
             System.out.println("Radde123 fetchFromCache");
             stationList = mDataBaseHandler.getAllButPreviousString();
@@ -323,9 +337,9 @@ public class MainActivity extends Activity {
             // First start-up we don't have an database.
             // Download station list from server and
             // populate database.
-            // else we have the data locally no need to
+            // else we have the data locally so no need to
             // fetch from server.
-            if ( !isThereAnDatabase || !haveWeBeenHereBefore() )
+            if ( !isThereAnDatabase || !haveWeBeenHereBefore() || !usedatabase)
                 populateDatabase();
             else
                 fetchFromCache();
@@ -380,10 +394,6 @@ public class MainActivity extends Activity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         System.out.println("Radde123 onOptionsItemSelected id: " + item.getItemId());
-
-       // switch(item.getItemId()){
-           // case R.id.
-        //}
 
         if (item.getTitle().equals("Settings")){
             System.out.println("Radde123 we clicked Settings");
