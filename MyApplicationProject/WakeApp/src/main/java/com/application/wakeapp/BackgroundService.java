@@ -6,6 +6,7 @@ import android.app.PendingIntent;
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
@@ -13,6 +14,7 @@ import android.media.AudioManager;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.os.Vibrator;
+import android.preference.PreferenceManager;
 import android.speech.tts.TextToSpeech;
 import android.widget.Toast;
 
@@ -25,6 +27,10 @@ public class BackgroundService extends Service {
     private static final long POINT_RADIUS = 1000; // in Meters
     private static final long ALERT_EXPIRATION = -1;
 
+    private int searchRadius;
+    private int outsidethreshold;
+    private int setradius;
+
     private Float currentSpeed;
     private LocationListener mLocationListener;
     private NotificationManager mNotificationManager;
@@ -34,6 +40,8 @@ public class BackgroundService extends Service {
     // The minimum time between updates in milliseconds
     private static final long MIN_TIME_BW_UPDATES = 1000 * 60 * 1; // 1 minute
     private TextToSpeech tts;
+    private SharedPreferences prefs;
+
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         System.out.println("Radde123 Service: onStartCommand");
@@ -47,8 +55,12 @@ public class BackgroundService extends Service {
         not.setLatestEventInfo(this, "WakeApp", "Running in background", contentIntent);
         mNotificationManager.notify(1, not);
 
-        finalDestination = new Location("Destination");
+        prefs =  PreferenceManager.getDefaultSharedPreferences(this);
+        setradius = Integer.parseInt(prefs.getString("setradius","120"));
 
+        System.out.println("Radde123 setradius: " + setradius);
+
+        finalDestination = new Location("Destination");
         finalDestination.setLongitude(intent.getExtras().getDouble("lng"));
         finalDestination.setLatitude(intent.getExtras().getDouble("lat"));
 
@@ -60,7 +72,7 @@ public class BackgroundService extends Service {
                 currentSpeed = location.getSpeed();
                 distance = Math.round(location.distanceTo(finalDestination));
                 System.out.println("Radde123 onLocationChanged " + location.getProvider());
-                if ( distance < 120 ){
+                if ( distance < setradius ){
                    String msg = "You have reached your destination";
                    Toast.makeText(getApplicationContext(),msg,Toast.LENGTH_LONG).show();
                    notifyUserDestinationReached();

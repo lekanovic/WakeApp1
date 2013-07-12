@@ -2,6 +2,7 @@ package com.application.wakeapp;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 import android.location.Criteria;
@@ -11,8 +12,10 @@ import android.location.LocationManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.app.Activity;
+import android.preference.PreferenceManager;
 import android.text.TextUtils;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
@@ -29,7 +32,6 @@ public class MainActivity extends Activity {
 
     private Location finalDestination;
     private Location myLocation=null;
-    private Integer radius = 2000;
     private SearchView mSearchView;
     private ListView mListView;
     private ArrayAdapter<String> mAdapter;
@@ -43,7 +45,9 @@ public class MainActivity extends Activity {
     private Float distance;
     private DataBaseHandler mDataBaseHandler;
     private Boolean isThereAnDatabase = Boolean.FALSE;
-    private Integer OUTSIDE_THRESHOLD = 1000;
+    private SharedPreferences prefs;
+    private int searchRadius;
+    private int outsidethreshold;
     private final String PATH_TO_DATABASE =
             "data/data/com.application.wakeapp/databases/stationNames";
     @Override
@@ -51,6 +55,10 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         System.out.println("Radde123 onCreate " + isServiceStarted);
+
+        prefs =  PreferenceManager.getDefaultSharedPreferences(this);
+        outsidethreshold = Integer.parseInt(prefs.getString("outsidethreshold","500"));
+        searchRadius = Integer.parseInt(prefs.getString("searchradius","5000"));
 
         findGPSPosition();
 
@@ -230,7 +238,7 @@ public class MainActivity extends Activity {
             Stations stations =
                     new Stations(myLocation.getLongitude(),
                             myLocation.getLatitude(),
-                            radius);
+                            searchRadius);
 
             stationList = stations.getAllStations(Boolean.FALSE);
 
@@ -261,18 +269,15 @@ public class MainActivity extends Activity {
 
                 mDataBaseHandler.addLocation(l);
             }
-
-
         }
-        private Boolean isOutsideThreshold(){
+        private Boolean haveWeBeenHereBefore(){
             Boolean ret = Boolean.FALSE;
-            System.out.println("Radde123 isOutsideThreshold");
+            System.out.println("Radde123 haveWeBeenHereBefore");
             ArrayList<Location> locations = mDataBaseHandler.getOnlyPreviousSearchesLocation();
 
             for (Location l : locations){
-                System.out.println("Radde123 OUTSIDE_THRESHOLD lat: " + l.getLatitude() +
-                        " lng: " + l.getLongitude());
-                    if ( myLocation.distanceTo(l) > OUTSIDE_THRESHOLD){
+                    if ( myLocation.distanceTo(l) < outsidethreshold){
+                        System.out.println("Radde123 haveWeBeenHereBefore TRUE distance: " + myLocation.distanceTo(l));
                         return Boolean.TRUE;
                     }
 
@@ -320,7 +325,7 @@ public class MainActivity extends Activity {
             // populate database.
             // else we have the data locally no need to
             // fetch from server.
-            if ( !isThereAnDatabase || isOutsideThreshold() )
+            if ( !isThereAnDatabase || !haveWeBeenHereBefore() )
                 populateDatabase();
             else
                 fetchFromCache();
@@ -371,6 +376,22 @@ public class MainActivity extends Activity {
                 BackgroundService.class));
         isServiceStarted = Boolean.FALSE;
 
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        System.out.println("Radde123 onOptionsItemSelected id: " + item.getItemId());
+
+       // switch(item.getItemId()){
+           // case R.id.
+        //}
+
+        if (item.getTitle().equals("Settings")){
+            System.out.println("Radde123 we clicked Settings");
+            Intent i = new Intent(MainActivity.this,WakeAppPreferences.class);
+            startActivity(i);
+        }
+
+        return true;
     }
     private String getTravelInfo(){
         String dist;

@@ -66,7 +66,7 @@ public class DataBaseHandler extends SQLiteOpenHelper{
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
 
-        System.out.println("Radde123 addLocation: " + l.getProvider());
+        //System.out.println("Radde123 addLocation: " + l.getProvider());
         values.put(KEY_NAME,l.getProvider());
         values.put(KEY_LATITUDE,l.getLatitude());
         values.put(KEY_LONGITUDE,l.getLongitude());

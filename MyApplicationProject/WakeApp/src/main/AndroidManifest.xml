@@ -41,6 +41,9 @@
         <service
                 android:name=".BackgroundService"
                 android:label="BackgroundServiceApp"/>
+        <activity
+                android:name="com.application.wakeapp.WakeAppPreferences"
+                android:label="@string/app_name" ></activity>
     </application>
 
 </manifest>

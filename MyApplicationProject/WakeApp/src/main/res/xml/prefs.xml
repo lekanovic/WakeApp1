@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <EditTextPreference
+        android:key="setradius"
+        android:title="Distance to final destination radius"
+        android:summary="Distance to final destination before activating trigger in meters"
+        android:inputType="numberDecimal"
+        android:defaultValue="120"
+            />
+    <EditTextPreference
+            android:key="searchradius"
+            android:title="Search radius for station search"
+            android:summary="Using large value here will generate long list with nearby stations in meters"
+            android:inputType="numberDecimal"
+            android:defaultValue="10000"
+           />
+    <EditTextPreference
+        android:key="outsidethreshold"
+        android:title="Threshold"
+        android:inputType="numberDecimal"
+        android:summary="Threshold is used to decide if we have been on this location before.Since position form network is not accurate we need to use threshold value in meters"
+        android:defaultValue="500"
+            />
+</PreferenceScreen>
