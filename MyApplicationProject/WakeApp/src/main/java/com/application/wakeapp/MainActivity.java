@@ -65,6 +65,18 @@ public class MainActivity extends Activity {
         searchRadius = Integer.parseInt(prefs.getString("searchradius","5000"));
 
         usedatabase = prefs.getBoolean("usedatabase",Boolean.TRUE);
+        prefs.registerOnSharedPreferenceChangeListener(new SharedPreferences.OnSharedPreferenceChangeListener() {
+            @Override
+            public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String s) {
+                System.out.println("Radde123 onSharedPreferenceChanged: " + s);
+                // If the user have changed searchradius we need to discard the database
+                // and re-fetch the station list from server.
+                if ( s.equals("searchradius") ){
+                    getApplicationContext().deleteDatabase(mDataBaseHandler.getDatabaseName());
+                }
+
+            }
+        });
         System.out.println("Radde123 usedatabase: " + usedatabase );
         findGPSPosition();
 

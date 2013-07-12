@@ -24,9 +24,6 @@ import java.util.Locale;
  * Created by Radovan on 2013-07-07.
  */
 public class BackgroundService extends Service {
-    private static final long POINT_RADIUS = 1000; // in Meters
-    private static final long ALERT_EXPIRATION = -1;
-
     private int searchRadius;
     private int outsidethreshold;
     private int setradius;
