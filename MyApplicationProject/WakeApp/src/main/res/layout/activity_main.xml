@@ -44,7 +44,9 @@
             android:visibility="invisible"
             android:layout_below="@+id/textView"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="14dp"/>
+            android:layout_marginTop="14dp"
+            style="@style/btnStyleGenoa"
+            />
 
     <TextView
             android:layout_width="wrap_content"
