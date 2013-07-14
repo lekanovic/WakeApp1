@@ -68,7 +68,8 @@ public class BackgroundService extends Service {
                 int distance;
                 currentSpeed = location.getSpeed();
                 distance = Math.round(location.distanceTo(finalDestination));
-                System.out.println("Radde123 onLocationChanged " + location.getProvider());
+                System.out.println("Radde123 onLocationChanged " + location.getProvider()
+                                    + "Speed: " + currentSpeed);
                 if ( distance < setradius ){
                    String msg = "You have reached your destination";
                    Toast.makeText(getApplicationContext(),msg,Toast.LENGTH_LONG).show();

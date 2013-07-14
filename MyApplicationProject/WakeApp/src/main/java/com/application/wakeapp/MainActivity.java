@@ -202,6 +202,9 @@ public class MainActivity extends Activity {
 
         Location tmp = locationManager.getLastKnownLocation(name);
 
+        if (tmp == null)
+            return Boolean.FALSE;
+
         long delta = TimeUnit.MILLISECONDS.toSeconds(System.currentTimeMillis() - tmp.getTime());
 
         // If the location is older then 3minutes
@@ -252,6 +255,9 @@ public class MainActivity extends Activity {
                 locationListener,null);
 
         locationManager.requestSingleUpdate(LocationManager.NETWORK_PROVIDER,
+                locationListener,null);
+
+        locationManager.requestSingleUpdate(LocationManager.PASSIVE_PROVIDER,
                 locationListener,null);
 
     }
@@ -319,16 +325,19 @@ public class MainActivity extends Activity {
         }
         private Boolean haveWeBeenHereBefore(){
             Boolean ret = Boolean.FALSE;
-            System.out.println("Radde123 haveWeBeenHereBefore");
+            Float distanceTo=0f;
             ArrayList<Location> locations = mDataBaseHandler.getOnlyPreviousSearchesLocation();
 
             for (Location l : locations){
                     if ( myLocation.distanceTo(l) < outsidethreshold){
-                        System.out.println("Radde123 haveWeBeenHereBefore TRUE distance: " + myLocation.distanceTo(l));
-                        return Boolean.TRUE;
+                        distanceTo = myLocation.distanceTo(l);
+                        ret = Boolean.TRUE;
+                        break;
                     }
 
             }
+            System.out.println("Radde123 haveWeBeenHereBefore TRUE distance: "
+                    + distanceTo + "meters");
             return ret;
         }
         private void fetchFromServer(){
@@ -369,6 +378,7 @@ public class MainActivity extends Activity {
             return  newList;
         }
         protected String doInBackground(String... urls) {
+            System.out.println("Radde123 doInBackground");
             long startTime = System.currentTimeMillis();
             do{//We need to get an position
                 try {
@@ -422,12 +432,16 @@ public class MainActivity extends Activity {
             mButton.setVisibility(View.VISIBLE);
             mTextView.setText(getTravelInfo());
 
+            // Stop the background service when we
+            // resume the UI.
+            stopService(new Intent(MainActivity.this,
+                    BackgroundService.class));
+
+            // Find our new position if we have moved
+            findGPSPosition();
+            new Background().execute();
         }
-
-        stopService(new Intent(MainActivity.this,
-                BackgroundService.class));
         isServiceStarted = Boolean.FALSE;
-
     }
     @Override
     protected void onDestroy(){
