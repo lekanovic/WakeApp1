@@ -12,9 +12,9 @@ import android.location.LocationManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.app.Activity;
-import android.os.SystemClock;
 import android.preference.PreferenceManager;
 import android.text.TextUtils;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -413,9 +413,11 @@ public class MainActivity extends Activity {
                     mAdapter.addAll(stationListNameOnly);
                     mAdapter.notifyDataSetChanged();
                     System.out.println("Radde123 notifyDataSetChanged len: " + stationListNameOnly.size());
-                    Toast.makeText(getApplicationContext(),
+                    Toast t = Toast.makeText(getApplicationContext(),
                             "Station list updated",
-                            Toast.LENGTH_SHORT).show();
+                            Toast.LENGTH_LONG);
+                    t.setGravity(Gravity.CENTER ,0, 0);
+                    t.show();
                 }
             });
             return null;
